@@ -16,6 +16,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Authenticate Docker with ACR
+        run: az acr login --name 5300nextjs
+
       - name: 'Build and push image'
         run: |
           docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
