@@ -17,6 +17,7 @@ jobs:
         uses: 'azure/aci-deploy@v1'
         with:
           resource-group: 5300
+          name: 5300week10
           dns-name-label: myappdeployment
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
           location: 'eastus'
