@@ -13,6 +13,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Authenticate Docker with ACR
+        run: az acr login --name 5300nextjs
+
       - name: 'Deploy to Azure Container Instances'
         uses: 'azure/aci-deploy@v1'
         with:
@@ -20,7 +23,7 @@ jobs:
           name: 5300week10
           dns-name-label: myappdeployment
           image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
-          location: 'eastus'
+          location: 'canadacentral'
           cpu: 1
           memory: 1.5
           ports: 80
