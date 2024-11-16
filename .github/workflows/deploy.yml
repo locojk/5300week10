@@ -26,5 +26,6 @@ jobs:
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           location: canadacentral
+          ports: 3000
           cpu: 1
           memory: 1.5
