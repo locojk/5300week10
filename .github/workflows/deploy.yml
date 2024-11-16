@@ -16,19 +16,6 @@ jobs:
       - name: Authenticate Docker with ACR
         run: az acr login --name 5300nextjs
 
-      - name: Verify Image in ACR
-        run: |
-          echo "Checking available images in ACR..."
-          az acr repository show-tags --name 5300nextjs --repository app --output table
-
-      - name: Pull Docker Image
-        run: |
-          echo "Pulling the image to verify accessibility..."
-          docker pull ${{ secrets.REGISTRY_LOGIN_SERVER }}/app:latest
-
-      - name: Print Image Name
-        run: echo ${{ secrets.REGISTRY_LOGIN_SERVER }}
-
       - name: 'Deploy to Azure Container Instances'
         uses: 'azure/aci-deploy@v1'
         with:
